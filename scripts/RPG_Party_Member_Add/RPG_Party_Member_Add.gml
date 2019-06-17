@@ -1,22 +1,17 @@
-//--------------------------------------------------------------------
-// RPG Party Member Add
-//--------------------------------------------------------------------
+var list1, list2, map1, map2;
 
-// Check to see if we have enough room.
-if (RPG_Party_Count() >= RPG_Party_Max_Size()) {
-	Error_Log("NOOOOOOO");
-	return -1;
+list1 = ds_list_find_value(party_database, argument0);
+map1 = string(ds_map_find_value(list1, Actor.Name));
+
+for (var i = 0; i < RPG_Party_Member_Count(); i += 1) {
+	list2 = ds_list_find_value(party, i); 
+	map2 = string(ds_map_find_value(list2, Actor.Name));	
+	
+	if (map1 == map2) {
+		Error_Log(map2 + " is already in the party");	
+		return 0;
+	}
 }
 
-// Checks to see if the Actor is already in the party and if not adds him to the party
-if (RPG_Party_Member_Exists(argument0)) {
-	Error_Log("Is in party");	
-	return -1;
-} else {
-	ds_list_add(party_group, RPG_Actor_Info(RPG_Actor_Get_By_Index(argument0)));
-	return 1;	
-}
-
-//--------------------------------------------------------------------
-// End Script
-//--------------------------------------------------------------------
+ds_list_add(party, ds_list_find_value(party_database, argument0));
+return 1;

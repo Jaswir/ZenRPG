@@ -1,8 +1,8 @@
 {
-    "id": "4ddca930-cf25-4a57-ba79-2fba41b8e488",
+    "id": "177c726c-05c7-4f77-af60-6982be572d9b",
     "modelName": "GMScript",
     "mvc": "1.0",
-    "name": "RPG_Party_Member_Add",
+    "name": "script18",
     "IsCompatibility": false,
     "IsDnD": false
 }
